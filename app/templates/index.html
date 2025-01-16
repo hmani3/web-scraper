@@ -11,8 +11,13 @@
         <h1>News Aggregator</h1>
     </header>
     <main>
+        <div class="search-input">
+            <form action="/scrape" method="post">
+                <input type="text" name="url" placeholder="Enter URL" autocomplete="off" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
         <section id="news-articles">
-            <!-- News articles will be dynamically inserted here -->
         </section>
     </main>
     <footer>
