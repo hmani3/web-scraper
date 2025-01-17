@@ -8,16 +8,16 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
     <div class="container mx-auto p-4">
-        <h1 class="text-2xl font-bold mb-4">Job Market Results</h1>
-        {% if jobs %}
+        <h1 class="text-2xl font-bold mb-4">Results</h1>
+        {% if result %}
             <ul class="space-y-4">
-                {% for job in jobs %}
+                {% for r in result %}
                     <li class="bg-white p-4 rounded shadow">
-                        <h2 class="text-lg font-semibold">{{ job.title }}</h2>
-                        <p class="text-sm text-gray-600">Company: {{ job.company }}</p>
-                        <p class="text-sm text-gray-600">Location: {{ job.location }}</p>
-                        <p class="text-sm text-gray-600">Salary: {{ job.salary }}</p>
-                        <a href="{{ job.link }}" target="_blank" class="text-blue-500 underline">View Job</a>
+                        <h2 class="text-lg font-semibold">{{ r["name"] }}</h2>
+                        <p class="text-sm text-gray-600">Capital: {{ r["capital"] }}</p>
+                        <p class="text-sm text-gray-600">Population: {{ r["population"] }}</p>
+                        <p class="text-sm text-gray-600">Area: {{ r["area"] }} km^2</p>
+                        <a href="http://en.wikipedia.org/wiki/" target="_blank" class="text-blue-500 underline">View Job</a>
                     </li>
                 {% endfor %}
             </ul>
