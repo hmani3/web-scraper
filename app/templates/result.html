@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <title>Job Market Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
 </head>
-<body>
-    <header>
-        <h1>Results</h1>
-    </header>
-    <div>
-        <ul>
-            {% for line in news %}
-                <li>{{ line }}</li>
-            {% endfor %}
-        </ul>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Job Market Results</h1>
+        {% if jobs %}
+            <ul class="space-y-4">
+                {% for job in jobs %}
+                    <li class="bg-white p-4 rounded shadow">
+                        <h2 class="text-lg font-semibold">{{ job.title }}</h2>
+                        <p class="text-sm text-gray-600">Company: {{ job.company }}</p>
+                        <p class="text-sm text-gray-600">Location: {{ job.location }}</p>
+                        <p class="text-sm text-gray-600">Salary: {{ job.salary }}</p>
+                        <a href="{{ job.link }}" target="_blank" class="text-blue-500 underline">View Job</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-gray-600">No job listings found.</p>
+        {% endif %}
     </div>
 </body>
 </html>
