@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from .scraper import scrape_news
+from .scraper import scraped_sites
 
 main = Blueprint('main', __name__)
 
@@ -10,5 +10,9 @@ def home():
 @main.route('/scrape', methods=['POST'])
 def scrape():
      url = request.form['url']
-     news = scrape_news(url)
-     return render_template('result.html', news=news)
+     jobs = scraped_sites(url)
+     jobs = [
+        {"title": "Software Engineer", "company": "TechCorp", "location": "Remote", "salary": "$100,000", "link": "https://example.com/job1"},
+        {"title": "Data Scientist", "company": "Data Inc.", "location": "New York, NY", "salary": "$120,000", "link": "https://example.com/job2"},
+    ]
+     return render_template('result.html', jobs=jobs)
